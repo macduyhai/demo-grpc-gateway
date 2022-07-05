@@ -8,6 +8,7 @@ import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
+	_ "google.golang.org/genproto/googleapis/api/visibility"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -103,27 +104,181 @@ func (m *PingResponse) GetMessage() string {
 	return ""
 }
 
+type CreateUserRequest struct {
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Age                  int32    `protobuf:"varint,2,opt,name=age,proto3" json:"age,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CreateUserRequest) Reset()         { *m = CreateUserRequest{} }
+func (m *CreateUserRequest) String() string { return proto.CompactTextString(m) }
+func (*CreateUserRequest) ProtoMessage()    {}
+func (*CreateUserRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_8e562cc4ef2f7e84, []int{2}
+}
+
+func (m *CreateUserRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CreateUserRequest.Unmarshal(m, b)
+}
+func (m *CreateUserRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CreateUserRequest.Marshal(b, m, deterministic)
+}
+func (m *CreateUserRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreateUserRequest.Merge(m, src)
+}
+func (m *CreateUserRequest) XXX_Size() int {
+	return xxx_messageInfo_CreateUserRequest.Size(m)
+}
+func (m *CreateUserRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_CreateUserRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CreateUserRequest proto.InternalMessageInfo
+
+func (m *CreateUserRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *CreateUserRequest) GetAge() int32 {
+	if m != nil {
+		return m.Age
+	}
+	return 0
+}
+
+type CreateUserResponse struct {
+	Code                 int32                    `protobuf:"varint,1,opt,name=code,proto3" json:"code,omitempty"`
+	Messsage             string                   `protobuf:"bytes,2,opt,name=messsage,proto3" json:"messsage,omitempty"`
+	Data                 *CreateUserResponse_Data `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
+	XXX_unrecognized     []byte                   `json:"-"`
+	XXX_sizecache        int32                    `json:"-"`
+}
+
+func (m *CreateUserResponse) Reset()         { *m = CreateUserResponse{} }
+func (m *CreateUserResponse) String() string { return proto.CompactTextString(m) }
+func (*CreateUserResponse) ProtoMessage()    {}
+func (*CreateUserResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_8e562cc4ef2f7e84, []int{3}
+}
+
+func (m *CreateUserResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CreateUserResponse.Unmarshal(m, b)
+}
+func (m *CreateUserResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CreateUserResponse.Marshal(b, m, deterministic)
+}
+func (m *CreateUserResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreateUserResponse.Merge(m, src)
+}
+func (m *CreateUserResponse) XXX_Size() int {
+	return xxx_messageInfo_CreateUserResponse.Size(m)
+}
+func (m *CreateUserResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_CreateUserResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CreateUserResponse proto.InternalMessageInfo
+
+func (m *CreateUserResponse) GetCode() int32 {
+	if m != nil {
+		return m.Code
+	}
+	return 0
+}
+
+func (m *CreateUserResponse) GetMesssage() string {
+	if m != nil {
+		return m.Messsage
+	}
+	return ""
+}
+
+func (m *CreateUserResponse) GetData() *CreateUserResponse_Data {
+	if m != nil {
+		return m.Data
+	}
+	return nil
+}
+
+type CreateUserResponse_Data struct {
+	UserId               int64    `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CreateUserResponse_Data) Reset()         { *m = CreateUserResponse_Data{} }
+func (m *CreateUserResponse_Data) String() string { return proto.CompactTextString(m) }
+func (*CreateUserResponse_Data) ProtoMessage()    {}
+func (*CreateUserResponse_Data) Descriptor() ([]byte, []int) {
+	return fileDescriptor_8e562cc4ef2f7e84, []int{3, 0}
+}
+
+func (m *CreateUserResponse_Data) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CreateUserResponse_Data.Unmarshal(m, b)
+}
+func (m *CreateUserResponse_Data) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CreateUserResponse_Data.Marshal(b, m, deterministic)
+}
+func (m *CreateUserResponse_Data) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreateUserResponse_Data.Merge(m, src)
+}
+func (m *CreateUserResponse_Data) XXX_Size() int {
+	return xxx_messageInfo_CreateUserResponse_Data.Size(m)
+}
+func (m *CreateUserResponse_Data) XXX_DiscardUnknown() {
+	xxx_messageInfo_CreateUserResponse_Data.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CreateUserResponse_Data proto.InternalMessageInfo
+
+func (m *CreateUserResponse_Data) GetUserId() int64 {
+	if m != nil {
+		return m.UserId
+	}
+	return 0
+}
+
 func init() {
 	proto.RegisterType((*PingRequest)(nil), "PingRequest")
 	proto.RegisterType((*PingResponse)(nil), "PingResponse")
+	proto.RegisterType((*CreateUserRequest)(nil), "CreateUserRequest")
+	proto.RegisterType((*CreateUserResponse)(nil), "CreateUserResponse")
+	proto.RegisterType((*CreateUserResponse_Data)(nil), "CreateUserResponse.Data")
 }
 
 func init() { proto.RegisterFile("gatewayproto/gatewaypb.proto", fileDescriptor_8e562cc4ef2f7e84) }
 
 var fileDescriptor_8e562cc4ef2f7e84 = []byte{
-	// 184 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x92, 0x49, 0x4f, 0x2c, 0x49,
-	0x2d, 0x4f, 0xac, 0x2c, 0x28, 0xca, 0x2f, 0xc9, 0xd7, 0x87, 0x71, 0x92, 0xf4, 0xc0, 0x7c, 0x29,
-	0x99, 0xf4, 0xfc, 0xfc, 0xf4, 0x9c, 0x54, 0xfd, 0xc4, 0x82, 0x4c, 0xfd, 0xc4, 0xbc, 0xbc, 0xfc,
-	0x92, 0xc4, 0x92, 0xcc, 0xfc, 0xbc, 0x62, 0x88, 0xac, 0x92, 0x3a, 0x17, 0x77, 0x40, 0x66, 0x5e,
-	0x7a, 0x50, 0x6a, 0x61, 0x69, 0x6a, 0x71, 0x89, 0x90, 0x04, 0x17, 0x7b, 0x6e, 0x6a, 0x71, 0x71,
-	0x62, 0x7a, 0xaa, 0x04, 0xa3, 0x02, 0xa3, 0x06, 0x67, 0x10, 0x8c, 0xab, 0xa4, 0xc1, 0xc5, 0x03,
-	0x51, 0x58, 0x5c, 0x90, 0x9f, 0x57, 0x9c, 0x8a, 0x5b, 0xa5, 0x91, 0x37, 0x17, 0xb7, 0x7b, 0x51,
-	0x41, 0xb2, 0x3b, 0xc4, 0x1d, 0x42, 0x36, 0x5c, 0x9c, 0xce, 0x19, 0xa9, 0xc9, 0xd9, 0x20, 0xdd,
-	0x42, 0x3c, 0x7a, 0x48, 0xb6, 0x49, 0xf1, 0xea, 0x21, 0x1b, 0xa9, 0x24, 0xd4, 0x74, 0xf9, 0xc9,
-	0x64, 0x26, 0x1e, 0x25, 0xf6, 0x32, 0x43, 0xfd, 0x82, 0xcc, 0xbc, 0x74, 0x2b, 0x46, 0x2d, 0x27,
-	0xee, 0x28, 0x4e, 0xb8, 0x87, 0x92, 0xd8, 0xc0, 0x6e, 0x36, 0x06, 0x04, 0x00, 0x00, 0xff, 0xff,
-	0xce, 0x57, 0x50, 0x9e, 0xf1, 0x00, 0x00, 0x00,
+	// 347 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x92, 0xc1, 0x4a, 0xc3, 0x40,
+	0x10, 0x86, 0xd9, 0x36, 0x6d, 0xcd, 0xa4, 0xa2, 0x1d, 0x41, 0x43, 0x2c, 0x58, 0x72, 0x31, 0x14,
+	0x49, 0xb0, 0x9e, 0xda, 0xa3, 0x15, 0x8a, 0x37, 0x89, 0x78, 0xf1, 0x22, 0xdb, 0x66, 0x89, 0x8b,
+	0x6d, 0x36, 0x66, 0xb7, 0x4a, 0xaf, 0xbe, 0x42, 0xcf, 0x3e, 0x95, 0xaf, 0xe0, 0x83, 0x48, 0x36,
+	0x4d, 0x0d, 0x54, 0xbc, 0xcd, 0xc7, 0xfc, 0xf3, 0xcf, 0xf0, 0xef, 0x42, 0x37, 0xa6, 0x8a, 0xbd,
+	0xd3, 0x55, 0x9a, 0x09, 0x25, 0x82, 0x12, 0xa6, 0xbe, 0x66, 0xa7, 0x1b, 0x0b, 0x11, 0xcf, 0x59,
+	0x40, 0x53, 0x1e, 0xd0, 0x24, 0x11, 0x8a, 0x2a, 0x2e, 0x12, 0xb9, 0xe9, 0x9e, 0x56, 0xba, 0x6f,
+	0x5c, 0xf2, 0x29, 0x9f, 0x73, 0xb5, 0x2a, 0x9a, 0xee, 0x39, 0x58, 0x77, 0x3c, 0x89, 0x43, 0xf6,
+	0xba, 0x64, 0x52, 0xa1, 0x0d, 0xad, 0x05, 0x93, 0x92, 0xc6, 0xcc, 0x26, 0x3d, 0xe2, 0x99, 0x61,
+	0x89, 0xae, 0x07, 0xed, 0x42, 0x28, 0x53, 0x91, 0x48, 0xf6, 0x8f, 0x72, 0x08, 0x9d, 0x71, 0xc6,
+	0xa8, 0x62, 0x0f, 0x92, 0x65, 0xa5, 0x31, 0x82, 0x91, 0xd0, 0x45, 0xa9, 0xd5, 0x35, 0x1e, 0x42,
+	0x3d, 0x1f, 0xaf, 0xf5, 0x88, 0xd7, 0x08, 0xf3, 0xd2, 0x5d, 0x13, 0xc0, 0xea, 0xec, 0x66, 0x17,
+	0x82, 0x31, 0x13, 0x51, 0x31, 0xdc, 0x08, 0x75, 0x8d, 0x0e, 0xec, 0xe5, 0x0b, 0x65, 0xe9, 0x60,
+	0x86, 0x5b, 0xc6, 0x0b, 0x30, 0x22, 0xaa, 0xa8, 0x5d, 0xef, 0x11, 0xcf, 0x1a, 0xd8, 0xfe, 0xae,
+	0xa5, 0x7f, 0x43, 0x15, 0x0d, 0xb5, 0xca, 0x39, 0x03, 0x23, 0x27, 0x3c, 0x81, 0xd6, 0x52, 0xb2,
+	0xec, 0x89, 0x47, 0x7a, 0x51, 0x3d, 0x6c, 0xe6, 0x78, 0x1b, 0x0d, 0x3e, 0x09, 0x58, 0x93, 0x2c,
+	0x9d, 0x4d, 0x8a, 0xd8, 0x71, 0x08, 0xe6, 0xf8, 0x99, 0xcd, 0x5e, 0xf2, 0x3c, 0xb0, 0xed, 0x57,
+	0xf2, 0x73, 0xf6, 0xfd, 0x6a, 0x48, 0xee, 0xc1, 0xc7, 0xd7, 0xf7, 0xba, 0x66, 0xa2, 0x91, 0xf2,
+	0x24, 0x1e, 0x91, 0x3e, 0xde, 0x03, 0xfc, 0x1e, 0x83, 0xe8, 0xef, 0x04, 0xe5, 0x1c, 0xfd, 0x71,
+	0xad, 0xdb, 0xd5, 0x3e, 0xc7, 0x6e, 0xa7, 0x78, 0xc4, 0xcb, 0x20, 0xbf, 0x4c, 0x06, 0x34, 0x8a,
+	0x46, 0xa4, 0x7f, 0x6d, 0x3d, 0x9a, 0xdb, 0x1f, 0x31, 0x6d, 0xea, 0x77, 0xbd, 0xfa, 0x09, 0x00,
+	0x00, 0xff, 0xff, 0xb9, 0x14, 0x80, 0x55, 0x32, 0x02, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -139,6 +294,7 @@ const _ = grpc.SupportPackageIsVersion4
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type GrpcGatewayClient interface {
 	CheckPing(ctx context.Context, in *PingRequest, opts ...grpc.CallOption) (*PingResponse, error)
+	CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error)
 }
 
 type grpcGatewayClient struct {
@@ -158,9 +314,19 @@ func (c *grpcGatewayClient) CheckPing(ctx context.Context, in *PingRequest, opts
 	return out, nil
 }
 
+func (c *grpcGatewayClient) CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error) {
+	out := new(CreateUserResponse)
+	err := c.cc.Invoke(ctx, "/GrpcGateway/CreateUser", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // GrpcGatewayServer is the server API for GrpcGateway service.
 type GrpcGatewayServer interface {
 	CheckPing(context.Context, *PingRequest) (*PingResponse, error)
+	CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error)
 }
 
 // UnimplementedGrpcGatewayServer can be embedded to have forward compatible implementations.
@@ -169,6 +335,9 @@ type UnimplementedGrpcGatewayServer struct {
 
 func (*UnimplementedGrpcGatewayServer) CheckPing(ctx context.Context, req *PingRequest) (*PingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CheckPing not implemented")
+}
+func (*UnimplementedGrpcGatewayServer) CreateUser(ctx context.Context, req *CreateUserRequest) (*CreateUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateUser not implemented")
 }
 
 func RegisterGrpcGatewayServer(s *grpc.Server, srv GrpcGatewayServer) {
@@ -193,6 +362,24 @@ func _GrpcGateway_CheckPing_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _GrpcGateway_CreateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GrpcGatewayServer).CreateUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/GrpcGateway/CreateUser",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GrpcGatewayServer).CreateUser(ctx, req.(*CreateUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _GrpcGateway_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "GrpcGateway",
 	HandlerType: (*GrpcGatewayServer)(nil),
@@ -200,6 +387,10 @@ var _GrpcGateway_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CheckPing",
 			Handler:    _GrpcGateway_CheckPing_Handler,
+		},
+		{
+			MethodName: "CreateUser",
+			Handler:    _GrpcGateway_CreateUser_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

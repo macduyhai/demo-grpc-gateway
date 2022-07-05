@@ -4,6 +4,9 @@
 ## Table of Contents
 
 - [gatewayproto/gatewaypb.proto](#gatewayproto_gatewaypb-proto)
+    - [CreateUserRequest](#-CreateUserRequest)
+    - [CreateUserResponse](#-CreateUserResponse)
+    - [CreateUserResponse.Data](#-CreateUserResponse-Data)
     - [PingRequest](#-PingRequest)
     - [PingResponse](#-PingResponse)
   
@@ -17,6 +20,54 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## gatewayproto/gatewaypb.proto
+
+
+
+<a name="-CreateUserRequest"></a>
+
+### CreateUserRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  |  |
+| age | [int32](#int32) |  |  |
+
+
+
+
+
+
+<a name="-CreateUserResponse"></a>
+
+### CreateUserResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| code | [int32](#int32) |  |  |
+| messsage | [string](#string) |  |  |
+| data | [CreateUserResponse.Data](#CreateUserResponse-Data) |  |  |
+
+
+
+
+
+
+<a name="-CreateUserResponse-Data"></a>
+
+### CreateUserResponse.Data
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user_id | [int64](#int64) |  |  |
+
+
+
 
 
 
@@ -64,6 +115,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | CheckPing | [.PingRequest](#PingRequest) | [.PingResponse](#PingResponse) |  |
+| CreateUser | [.CreateUserRequest](#CreateUserRequest) | [.CreateUserResponse](#CreateUserResponse) |  |
 
  
 
@@ -89,3 +141,7 @@
 | <a name="string" /> string | A string must always contain UTF-8 encoded or 7-bit ASCII text. | string | String | str/unicode | string | string | string | String (UTF-8) |
 | <a name="bytes" /> bytes | May contain any arbitrary sequence of bytes. | string | ByteString | str | []byte | ByteString | string | String (ASCII-8BIT) |
 
+
+<h2> For Test</h2>
+<p> - curl -X POST "http://localhost:8081/ping" -d '{"message":"Ping"}'  </p>
+<p> - curl -d '{"name":"you name", "age": 18}' -X POST 'http://localhost:8081/api/v1/users/add' </p>

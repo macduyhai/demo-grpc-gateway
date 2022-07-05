@@ -4,6 +4,7 @@ syntax = "proto3";
 option go_package = "gatewaypb";
 
 import "google/api/annotations.proto";
+import "google/api/visibility.proto";
 
 message PingRequest {
     string message = 1;
@@ -11,11 +12,31 @@ message PingRequest {
 message PingResponse {
     string message = 1;
 }
+message CreateUserRequest {
+    string name = 1;
+    int32 age = 2;
+}
+
+message CreateUserResponse {
+    message Data {
+        int64 user_id = 1;
+    }
+
+    int32 code = 1;
+    string messsage = 2;
+    Data data = 3;
+}
 
 service GrpcGateway {
     rpc CheckPing(PingRequest) returns (PingResponse){
         option (google.api.http)={
-            post: "v1/ping"
+            get: "ping"
+            body: "*"
+        };
+    }
+    rpc CreateUser (CreateUserRequest) returns (CreateUserResponse){
+        option (google.api.http)={
+            post: "/api/v1/users/add"
             body: "*"
         };
     }
