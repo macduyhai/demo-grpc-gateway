@@ -18,7 +18,7 @@ type server struct {
 }
 
 func (s *server) CheckPing(ctx context.Context, req *gatewaypb.PingRequest) (*gatewaypb.PingResponse, error) {
-	log.Printf("Receive message %s\n", req.GetMessage())
+	log.Printf("Receive Ping from Client")
 	return &gatewaypb.PingResponse{
 		Message: "PongPong",
 	}, nil
@@ -30,10 +30,10 @@ func (s *server) CreateUser(ctx context.Context, req *gatewaypb.CreateUserReques
 		log.Printf("Get header error\n")
 		return nil, errors.New("Get header error")
 	}
-	log.Println("Get header ok", "header", headers)
+	log.Println("Get header ok\n", headers)
 	log.Println("Create user success")
 	return &gatewaypb.CreateUserResponse{
-		Code:     1,
+		Code:     200,
 		Messsage: "create success",
 		Data: &gatewaypb.CreateUserResponse_Data{
 			UserId: time.Now().Unix(),

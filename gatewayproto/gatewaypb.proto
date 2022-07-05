@@ -30,8 +30,7 @@ message CreateUserResponse {
 service GrpcGateway {
     rpc CheckPing(PingRequest) returns (PingResponse){
         option (google.api.http)={
-            get: "ping"
-            body: "*"
+            get: "/ping"
         };
     }
     rpc CreateUser (CreateUserRequest) returns (CreateUserResponse){
