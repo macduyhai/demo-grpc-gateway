@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+
+option go_package = "gatewaypb";
+
+import "google/api/annotations.proto";
+
+message PingRequest {
+    string message = 1;
+} 
+message PingResponse {
+    string message = 1;
+}
+
+service GrpcGateway {
+    rpc CheckPing(PingRequest) returns (PingResponse){
+        option (google.api.http)={
+            post: "v1/ping"
+            body: "*"
+        };
+    }
+}
